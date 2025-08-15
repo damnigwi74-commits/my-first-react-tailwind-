@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Table from "./components/DkTable";
 import FormDialog from "./components/FormDialog";
+import toast from "react-hot-toast";
+import LandlordFormDialog, { type LandlordFormData } from "./components/LandlordFormDialog";
+
 
 interface Landlord {
   id: number;
@@ -13,8 +16,8 @@ interface Landlord {
 export default function Dashboard() {
   const [landlords, setLandlords] = useState<Landlord[]>([]);
   const [loading, setLoading] = useState(true);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [editingItem, setEditingItem] = useState<any>(null);
+const [formOpen, setFormOpen] = useState(false);
+  const [editData, setEditData] = useState<LandlordFormData | undefined>();
 
   useEffect(() => {
     axios
@@ -25,18 +28,32 @@ export default function Dashboard() {
 
 
    const handleAdd = () => {
-    setEditingItem(null);
-    setOpenDialog(true);
+    setEditData(undefined);
+    setFormOpen(true);
   };
 
-  const handleEdit = (item: any) => {
-    setEditingItem(item);
-    setOpenDialog(true);
+  const handleEdit = (item: Landlord) => {
+    setEditData({
+      name: item.title,
+      phone: "0712345678",
+      location: "Nairobi",
+      dob: "1990-01-01",
+      profileImage: item.thumbnailUrl,
+      nationalId: "12345678",
+      kraPin: "A1234567B",
+      passportNumber: "P1234567",
+      address: "123 Street, Nairobi"
+    });
+    setFormOpen(true);
   };
 
-  const handleSubmit = (values: any) => {
-    console.log("Form submitted:", values);
-    // call API here
+  const handleSubmitForm = (data: LandlordFormData) => {
+    if (editData) {
+      toast.success("Landlord updated!");
+    } else {
+      toast.success("Landlord added!");
+    }
+    setFormOpen(false);
   };
 
   return (
@@ -114,18 +131,21 @@ export default function Dashboard() {
         data={landlords}
         loading={loading}
         onView={(item) => alert(`Viewing ${item.title}`)}
-        onEdit={(item) => alert(`Editing ${item.title}`)}
+        //onEdit={(item) => alert(`Editing ${item.title}`)}
+          onEdit={handleEdit}
         onDelete={(item) => alert(`Deleting ${item.title}`)}
       />
     </div>
 
-    <FormDialog
-        open={openDialog}
-        title={editingItem ? "Edit Landlord" : "Add Landlord"}
-        initialValues={editingItem || {}}
-        onClose={() => setOpenDialog(false)}
-        onSubmit={handleSubmit}
+
+
+       <LandlordFormDialog
+        open={formOpen}
+        onClose={() => setFormOpen(false)}
+        onSubmit={handleSubmitForm}
+        initialData={editData}
       />
     </>
   );
 }
+
