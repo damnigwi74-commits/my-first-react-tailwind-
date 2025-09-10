@@ -1,5 +1,7 @@
 import React from 'react';
+import Gallery from './components/Gallery';
 
+//const LearningPage = () => {
 const LearningPage: React.FC = () => {
     return (
         <div>
@@ -36,6 +38,11 @@ const LearningPage: React.FC = () => {
             <div className=''>
 
             </div>
+
+            <section className="m-12">
+        <h3 className="text-2xl font-semibold text-gray-800 mb-4">Our Gallery</h3>
+        <Gallery />
+      </section>
         </div>
     );
 };
