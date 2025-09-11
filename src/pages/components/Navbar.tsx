@@ -1,71 +1,82 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import logo from "../../assets/logo.png"; // adjust path
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  // ✅ Define your nav items here (easy to add/remove)
-  const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/tours", label: "Tours" },
-    { path: "/problems", label: "Problems" }, // 👈 new tab
-    { path: "/contact", label: "Contact" },
-  ];
+    // ✅ Define your nav items here (easy to add/remove)
+    const navItems = [
+        { path: "/", label: "Home" },
+        { path: "/about", label: "About" },
+        { path: "/tours", label: "Tours" },
+        { path: "/problems", label: "Problems" }, // 👈 new tab
+        { path: "/contact", label: "Contact" },
+    ];
 
-  return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <h1 className="text-2xl font-bold text-blue-600">DK Touring</h1>
+    return (
+        <nav className="bg-white shadow-md sticky top-0 z-50">
+            <div className="container mx-auto px-6 py-4 flex justify-between items-center">
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className="hover:text-blue-600"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
+                {/* <h1 className="text-2xl font-bold text-blue-600">DK Touring</h1> */}
+                {/* Logo */}
+                <div className="flex items-center space-x-2">
+                    <img
+                       src={logo}// src="/logo.png" // 👈 replace with your actual logo path (e.g. public/logo.png)
+                        alt="DK Touring Logo"
+                        className="h-12 w-12"
+                    />
+                    <h1 className="text-2xl font-bold text-blue-600">DK Touring</h1>
+                </div>
 
-        {/* Mobile Toggle Button */}
-        <button
-          className="md:hidden text-gray-700 focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? (
-            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-          ) : (
-            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-          )}
-        </button>
-      </div>
 
-      {/* Mobile Dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <div className="px-6 py-4 space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className="block hover:text-blue-600"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
-  );
+                {/* Desktop Menu */}
+                <div className="hidden md:flex space-x-6">
+                    {navItems.map((item) => (
+                        <Link
+                            key={item.path}
+                            to={item.path}
+                            className="hover:text-blue-600"
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+
+                {/* Mobile Toggle Button */}
+                <button
+                    className="md:hidden text-gray-700 focus:outline-none"
+                    onClick={() => setIsOpen(!isOpen)}
+                    aria-label="Toggle menu"
+                >
+                    {isOpen ? (
+                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    ) : (
+                        <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                    )}
+                </button>
+            </div>
+
+            {/* Mobile Dropdown */}
+            {isOpen && (
+                <div className="md:hidden bg-white border-t border-gray-200">
+                    <div className="px-6 py-4 space-y-4">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.path}
+                                to={item.path}
+                                className="block hover:text-blue-600"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </nav>
+    );
 }
 
 /*
