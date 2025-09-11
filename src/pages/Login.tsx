@@ -149,6 +149,11 @@ const Login: React.FC = () => {
             </Link>
           </p>
         </div>
+
+          <button onClick={handleSubmitSimulate} className="mt-4 text-sm text-gray-500 underline">
+             Simulate Login
+          </button>
+
       </div>
 
       {/* Dialog */}

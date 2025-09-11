@@ -1,21 +1,11 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Table from "./components/DkTable";
-//import FormDialog from "./components/FormDialog";
+import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
+import Table from "./components/DkTable";
 import LandlordFormDialog, { type LandlordFormData } from "./components/LandlordFormDialog";
+import type { Landlord } from "./Dashboard";
 
-
-export interface Landlord {
-  id: number;
-  title: string;
-  url: string;
-  thumbnailUrl: string;
-}
-
-
-const Dashboard: React.FC = () => {
-
+function DashboardV2() {
   const [landlords, setLandlords] = useState<Landlord[]>([]);
   const [loading, setLoading] = useState(true);
   const [formOpen, setFormOpen] = useState(false);
@@ -58,7 +48,6 @@ const Dashboard: React.FC = () => {
     }
     setFormOpen(false);
   };
-
 
   return (
     <>
@@ -151,8 +140,6 @@ const Dashboard: React.FC = () => {
       />
     </>
   );
-};
+}
 
-export default Dashboard;
-
-//export default 
+export default DashboardV2;
