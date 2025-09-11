@@ -9,22 +9,25 @@ import Footer from "./pages/components/Footer";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Tours from "./pages/Tours";
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-    <Navbar />
+      <Navbar />
       <main className="min-h-screen">
-      <Routes>
-        <Route path="/learn" element={<LearningPage />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-         <Route path="/about" element={<About />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/learn" element={<LearningPage />} />
+          <Route path="/tours" element={<Tours />} />
+          <Route path="/problems" element={<Home />} />
+          <Route path="/signin" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-      </Routes>
-       </main>
+        </Routes>
+      </main>
       <Footer />
     </BrowserRouter>
   );
