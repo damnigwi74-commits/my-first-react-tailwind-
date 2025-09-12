@@ -19,15 +19,15 @@ export default function Navbar() {
         <nav className="bg-white shadow-md sticky top-0 z-50">
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
 
-                {/* <h1 className="text-2xl font-bold text-blue-600">DK Touring</h1> */}
+                {/* <h1 className="text-2xl font-bold text-blue-600">My APP</h1> */}
                 {/* Logo */}
                 <div className="flex items-center space-x-2">
                     <img
                        src={logo}// src="/logo.png" // 👈 replace with your actual logo path (e.g. public/logo.png)
-                        alt="DK Touring Logo"
+                        alt="My APP Logo"
                         className="h-12 w-12"
                     />
-                    <h1 className="text-2xl font-bold text-blue-600">DK Touring</h1>
+                    <h1 className="text-2xl font-bold text-blue-600">My APP</h1>
                 </div>
 
 
@@ -86,7 +86,7 @@ export default function Navbar() {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-blue-600">DK Touring</h1>
+        <h1 className="text-2xl font-bold text-blue-600">My APP</h1>
 
         <div className="hidden md:flex space-x-6">
           <Link to="/" className="hover:text-blue-600">Home</Link>
