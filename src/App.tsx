@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Tours from "./pages/Tours";
+import PostPage from "./pages/PostPage";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
       <main className="min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/post" element={<PostPage />} />
           <Route path="/learn" element={<LearningPage />} />
           <Route path="/tours" element={<Tours />} />
           <Route path="/problems" element={<Home />} />
@@ -26,6 +28,7 @@ const App: React.FC = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          
         </Routes>
       </main>
       <Footer />

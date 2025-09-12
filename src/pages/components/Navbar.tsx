@@ -11,7 +11,7 @@ export default function Navbar() {
         { path: "/", label: "Home" },
         { path: "/about", label: "About" },
         { path: "/tours", label: "Tours" },
-        { path: "/problems", label: "Problems" }, // 👈 new tab
+        { path: "/post", label: "Post" }, // 👈 new tab
         { path: "/contact", label: "Contact" },
     ];
 
